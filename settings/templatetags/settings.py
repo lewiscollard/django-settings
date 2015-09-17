@@ -1,6 +1,7 @@
 from django import template
 from django.template.defaultfilters import linebreaksbr
-from camfed.apps.settings.models import Setting
+
+from ..models import Setting
 
 register = template.Library()
 
