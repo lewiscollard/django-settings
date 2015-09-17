@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.contrib import admin
-from camfed.apps.settings.models import Setting
+
+from .models import Setting
 
 
 class SettingAdmin(admin.ModelAdmin):

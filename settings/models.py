@@ -1,5 +1,6 @@
-from cms.apps.media.models import ImageRefField
 from django.db import models
+
+from cms.apps.media.models import ImageRefField
 
 
 class Setting(models.Model):
@@ -47,5 +48,3 @@ class Setting(models.Model):
 
     def __str__(self):
         return self.name
-
-
