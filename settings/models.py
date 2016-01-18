@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import linebreaksbr
 
 from cms.apps.media.models import ImageRefField
 
@@ -48,3 +49,11 @@ class Setting(models.Model):
 
     def __str__(self):
         return self.name
+
+    def value(self):
+        return {
+            'string': self.string,
+            'text': linebreaksbr(self.text),
+            'number': self.number,
+            'image': self.image.file.url if self.image else '',
+        }[self.type]
