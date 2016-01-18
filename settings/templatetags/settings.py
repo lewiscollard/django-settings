@@ -1,23 +1,17 @@
 from django import template
 
-from ..models import Setting
+from ..utils import get_setting as get_setting_util
 
 register = template.Library()
 
 
 @register.simple_tag()
 def setting(key):
-    # Get the setting by key
-    try:
-        return Setting.objects.get(key=key).value()
-    except Setting.DoesNotExist:
-        return key
+    # Output the setting by key
+    return get_setting_util(key, default=key)
 
 
 @register.assignment_tag()
-def get_setting(key):
+def get_setting(key, default=None):
     # Get the setting by key
-    try:
-        return Setting.objects.get(key=key).value()
-    except Setting.DoesNotExist:
-        return None
+    return get_setting_util(key, default)
